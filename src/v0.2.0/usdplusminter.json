@@ -5,7 +5,8 @@
   "networkAddresses": {
     "1": "0x6594b90d5c5e4f311613367d4274db687547a53c",
     "42161": "0xC550998d14EB90321311271caAE393DA2077b3B0",
-    "8453": "0xF83042d4bbb1cB9C9e1042da4654585C60f6FFdc"
+    "8453": "0xF83042d4bbb1cB9C9e1042da4654585C60f6FFdc",
+    "11155111": "0xDFFBE7dda9E29d1108BC0ac5DdE7BBcF45C283D2"
   },
   "abi": [
     { "type": "constructor", "inputs": [], "stateMutability": "nonpayable" },
