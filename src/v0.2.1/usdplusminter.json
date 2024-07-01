@@ -1,8 +1,11 @@
 {
-    "defaultAddress": "0xf56D1DFa61885A2cD08FdF7ABcb910dBAFdF6E75",
+    "defaultAddress": "0x7E4D801E961A0db81938a29efEc10d2179a7486B",
     "contractName": "UsdPlusMinter",
     "version": "0.2.1",
     "networkAddresses": {
+        "1": "0x63088ebeBC9Aaa8f774C02E025098B97364C0c25",
+        "42161": "0x7E4D801E961A0db81938a29efEc10d2179a7486B",
+        "7887": "0xeDA274898ED364Bd346fA74cf6eCAB4BF8f1665f",
         "11155111": "0xf56D1DFa61885A2cD08FdF7ABcb910dBAFdF6E75"
     },
     "abi": [
