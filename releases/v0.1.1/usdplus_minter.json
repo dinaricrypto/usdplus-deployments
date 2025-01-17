@@ -1,20 +1,35 @@
 {
-  "defaultAddress": "0xC550998d14EB90321311271caAE393DA2077b3B0",
-  "contractName": "UsdPlusMinter",
-  "version": "0.2.0",
-  "networkAddresses": {
-    "1": "0x6594b90d5c5e4f311613367d4274db687547a53c",
-    "42161": "0xC550998d14EB90321311271caAE393DA2077b3B0",
-    "8453": "0xF83042d4bbb1cB9C9e1042da4654585C60f6FFdc",
-    "11155111": "0xDFFBE7dda9E29d1108BC0ac5DdE7BBcF45C283D2"
+  "name": "UsdPlusMinter",
+  "version": "0.1.1",
+  "deployments": {
+    "production": {
+      "1": "0x6Aa1BDa7e764BC62589E64F371A4022B80B3c72a",
+      "42161": "0x223E3345698d7027e9Fd85064c5aaAc33E2577d6"
+    },
+    "staging": {
+      "11155111": "0x3c34a5ACBD6Cf3e2305384276a7845A336a66041",
+      "421614": "0x8F62900979614003a43792C3b6B163e03E33631D",
+      "31337": "0x3c34a5ACBD6Cf3e2305384276a7845A336a66041",
+      "1337": "0x8F62900979614003a43792C3b6B163e03E33631D"
+    }
   },
   "abi": [
-    { "type": "constructor", "inputs": [], "stateMutability": "nonpayable" },
+    {
+      "type": "constructor",
+      "inputs": [],
+      "stateMutability": "nonpayable"
+    },
     {
       "type": "function",
       "name": "UPGRADE_INTERFACE_VERSION",
       "inputs": [],
-      "outputs": [{ "name": "", "type": "string", "internalType": "string" }],
+      "outputs": [
+        {
+          "name": "",
+          "type": "string",
+          "internalType": "string"
+        }
+      ],
       "stateMutability": "view"
     },
     {
@@ -38,11 +53,44 @@
           "type": "uint256",
           "internalType": "uint256"
         },
-        { "name": "receiver", "type": "address", "internalType": "address" }
+        {
+          "name": "receiver",
+          "type": "address",
+          "internalType": "address"
+        }
       ],
       "outputs": [
         {
           "name": "usdPlusAmount",
+          "type": "uint256",
+          "internalType": "uint256"
+        }
+      ],
+      "stateMutability": "nonpayable"
+    },
+    {
+      "type": "function",
+      "name": "depositAndStake",
+      "inputs": [
+        {
+          "name": "paymentToken",
+          "type": "address",
+          "internalType": "contract IERC20"
+        },
+        {
+          "name": "paymentTokenAmount",
+          "type": "uint256",
+          "internalType": "uint256"
+        },
+        {
+          "name": "receiver",
+          "type": "address",
+          "internalType": "address"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "",
           "type": "uint256",
           "internalType": "uint256"
         }
@@ -60,8 +108,16 @@
         }
       ],
       "outputs": [
-        { "name": "", "type": "uint256", "internalType": "uint256" },
-        { "name": "", "type": "uint8", "internalType": "uint8" }
+        {
+          "name": "",
+          "type": "uint256",
+          "internalType": "uint256"
+        },
+        {
+          "name": "",
+          "type": "uint8",
+          "internalType": "uint8"
+        }
       ],
       "stateMutability": "view"
     },
@@ -69,13 +125,21 @@
       "type": "function",
       "name": "initialize",
       "inputs": [
-        { "name": "usdPlus", "type": "address", "internalType": "address" },
+        {
+          "name": "initialStakedUsdplus",
+          "type": "address",
+          "internalType": "contract StakedUsdPlus"
+        },
         {
           "name": "initialPaymentRecipient",
           "type": "address",
           "internalType": "address"
         },
-        { "name": "initialOwner", "type": "address", "internalType": "address" }
+        {
+          "name": "initialOwner",
+          "type": "address",
+          "internalType": "address"
+        }
       ],
       "outputs": [],
       "stateMutability": "nonpayable"
@@ -94,7 +158,11 @@
           "type": "uint256",
           "internalType": "uint256"
         },
-        { "name": "receiver", "type": "address", "internalType": "address" }
+        {
+          "name": "receiver",
+          "type": "address",
+          "internalType": "address"
+        }
       ],
       "outputs": [
         {
@@ -107,16 +175,57 @@
     },
     {
       "type": "function",
+      "name": "mintAndStake",
+      "inputs": [
+        {
+          "name": "paymentToken",
+          "type": "address",
+          "internalType": "contract IERC20"
+        },
+        {
+          "name": "usdPlusAmount",
+          "type": "uint256",
+          "internalType": "uint256"
+        },
+        {
+          "name": "receiver",
+          "type": "address",
+          "internalType": "address"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "",
+          "type": "uint256",
+          "internalType": "uint256"
+        }
+      ],
+      "stateMutability": "nonpayable"
+    },
+    {
+      "type": "function",
       "name": "owner",
       "inputs": [],
-      "outputs": [{ "name": "", "type": "address", "internalType": "address" }],
+      "outputs": [
+        {
+          "name": "",
+          "type": "address",
+          "internalType": "address"
+        }
+      ],
       "stateMutability": "view"
     },
     {
       "type": "function",
       "name": "paymentRecipient",
       "inputs": [],
-      "outputs": [{ "name": "", "type": "address", "internalType": "address" }],
+      "outputs": [
+        {
+          "name": "",
+          "type": "address",
+          "internalType": "address"
+        }
+      ],
       "stateMutability": "view"
     },
     {
@@ -142,7 +251,13 @@
       "type": "function",
       "name": "pendingOwner",
       "inputs": [],
-      "outputs": [{ "name": "", "type": "address", "internalType": "address" }],
+      "outputs": [
+        {
+          "name": "",
+          "type": "address",
+          "internalType": "address"
+        }
+      ],
       "stateMutability": "view"
     },
     {
@@ -160,7 +275,37 @@
           "internalType": "uint256"
         }
       ],
-      "outputs": [{ "name": "", "type": "uint256", "internalType": "uint256" }],
+      "outputs": [
+        {
+          "name": "",
+          "type": "uint256",
+          "internalType": "uint256"
+        }
+      ],
+      "stateMutability": "view"
+    },
+    {
+      "type": "function",
+      "name": "previewDepositAndStake",
+      "inputs": [
+        {
+          "name": "paymentToken",
+          "type": "address",
+          "internalType": "contract IERC20"
+        },
+        {
+          "name": "paymentTokenAmount",
+          "type": "uint256",
+          "internalType": "uint256"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "",
+          "type": "uint256",
+          "internalType": "uint256"
+        }
+      ],
       "stateMutability": "view"
     },
     {
@@ -178,14 +323,26 @@
           "internalType": "uint256"
         }
       ],
-      "outputs": [{ "name": "", "type": "uint256", "internalType": "uint256" }],
+      "outputs": [
+        {
+          "name": "",
+          "type": "uint256",
+          "internalType": "uint256"
+        }
+      ],
       "stateMutability": "view"
     },
     {
       "type": "function",
       "name": "proxiableUUID",
       "inputs": [],
-      "outputs": [{ "name": "", "type": "bytes32", "internalType": "bytes32" }],
+      "outputs": [
+        {
+          "name": "",
+          "type": "bytes32",
+          "internalType": "bytes32"
+        }
+      ],
       "stateMutability": "view"
     },
     {
@@ -228,9 +385,26 @@
     },
     {
       "type": "function",
+      "name": "stakedUsdplus",
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "",
+          "type": "address",
+          "internalType": "contract StakedUsdPlus"
+        }
+      ],
+      "stateMutability": "view"
+    },
+    {
+      "type": "function",
       "name": "transferOwnership",
       "inputs": [
-        { "name": "newOwner", "type": "address", "internalType": "address" }
+        {
+          "name": "newOwner",
+          "type": "address",
+          "internalType": "address"
+        }
       ],
       "outputs": [],
       "stateMutability": "nonpayable"
@@ -244,7 +418,11 @@
           "type": "address",
           "internalType": "address"
         },
-        { "name": "data", "type": "bytes", "internalType": "bytes" }
+        {
+          "name": "data",
+          "type": "bytes",
+          "internalType": "bytes"
+        }
       ],
       "outputs": [],
       "stateMutability": "payable"
@@ -253,7 +431,13 @@
       "type": "function",
       "name": "usdplus",
       "inputs": [],
-      "outputs": [{ "name": "", "type": "address", "internalType": "address" }],
+      "outputs": [
+        {
+          "name": "",
+          "type": "address",
+          "internalType": "contract UsdPlus"
+        }
+      ],
       "stateMutability": "view"
     },
     {
@@ -387,14 +571,22 @@
       "type": "error",
       "name": "AddressEmptyCode",
       "inputs": [
-        { "name": "target", "type": "address", "internalType": "address" }
+        {
+          "name": "target",
+          "type": "address",
+          "internalType": "address"
+        }
       ]
     },
     {
       "type": "error",
       "name": "AddressInsufficientBalance",
       "inputs": [
-        { "name": "account", "type": "address", "internalType": "address" }
+        {
+          "name": "account",
+          "type": "address",
+          "internalType": "address"
+        }
       ]
     },
     {
@@ -408,42 +600,94 @@
         }
       ]
     },
-    { "type": "error", "name": "ERC1967NonPayable", "inputs": [] },
-    { "type": "error", "name": "FailedInnerCall", "inputs": [] },
-    { "type": "error", "name": "InvalidInitialization", "inputs": [] },
-    { "type": "error", "name": "MathOverflowedMulDiv", "inputs": [] },
-    { "type": "error", "name": "NotInitializing", "inputs": [] },
+    {
+      "type": "error",
+      "name": "ERC1967NonPayable",
+      "inputs": []
+    },
+    {
+      "type": "error",
+      "name": "FailedInnerCall",
+      "inputs": []
+    },
+    {
+      "type": "error",
+      "name": "InvalidInitialization",
+      "inputs": []
+    },
+    {
+      "type": "error",
+      "name": "MathOverflowedMulDiv",
+      "inputs": []
+    },
+    {
+      "type": "error",
+      "name": "NotInitializing",
+      "inputs": []
+    },
     {
       "type": "error",
       "name": "OwnableInvalidOwner",
       "inputs": [
-        { "name": "owner", "type": "address", "internalType": "address" }
+        {
+          "name": "owner",
+          "type": "address",
+          "internalType": "address"
+        }
       ]
     },
     {
       "type": "error",
       "name": "OwnableUnauthorizedAccount",
       "inputs": [
-        { "name": "account", "type": "address", "internalType": "address" }
+        {
+          "name": "account",
+          "type": "address",
+          "internalType": "address"
+        }
       ]
     },
-    { "type": "error", "name": "PaymentTokenNotAccepted", "inputs": [] },
+    {
+      "type": "error",
+      "name": "PaymentTokenNotAccepted",
+      "inputs": []
+    },
     {
       "type": "error",
       "name": "SafeERC20FailedOperation",
       "inputs": [
-        { "name": "token", "type": "address", "internalType": "address" }
+        {
+          "name": "token",
+          "type": "address",
+          "internalType": "address"
+        }
       ]
     },
-    { "type": "error", "name": "UUPSUnauthorizedCallContext", "inputs": [] },
+    {
+      "type": "error",
+      "name": "UUPSUnauthorizedCallContext",
+      "inputs": []
+    },
     {
       "type": "error",
       "name": "UUPSUnsupportedProxiableUUID",
       "inputs": [
-        { "name": "slot", "type": "bytes32", "internalType": "bytes32" }
+        {
+          "name": "slot",
+          "type": "bytes32",
+          "internalType": "bytes32"
+        }
       ]
     },
-    { "type": "error", "name": "ZeroAddress", "inputs": [] },
-    { "type": "error", "name": "ZeroAmount", "inputs": [] }
+    {
+      "type": "error",
+      "name": "ZeroAddress",
+      "inputs": []
+    },
+    {
+      "type": "error",
+      "name": "ZeroAmount",
+      "inputs": []
+    }
   ]
 }

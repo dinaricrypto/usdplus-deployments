@@ -1,12 +1,18 @@
 {
-  "defaultAddress": "0xe3dE80F8dB28d1C2ebE6F1e8d42Ea4EaA572019E",
-  "contractName": "CCIPWaypoint",
-  "version": "0.2.0",
-  "networkAddresses": {
-    "1": "0xF83042d4bbb1cB9C9e1042da4654585C60f6FFdc",
-    "42161": "0x3A34b7Fa417B51af57936f72b8234C824F816907",
-    "8453": "0x4528dDB6df3b726CA25E1C262Cf5548627012955",
-    "11155111": "0xdA4f6b210C22A3bD831e5783731c3b0565167e0f"
+  "name": "CCIPWaypoint",
+  "version": "0.1.2",
+  "deployments": {
+    "production": {
+      "1": "0xF83042d4bbb1cB9C9e1042da4654585C60f6FFdc",
+      "42161": "0x3A34b7Fa417B51af57936f72b8234C824F816907"
+    },
+    "staging": {
+      "11155111": "0xe3dE80F8dB28d1C2ebE6F1e8d42Ea4EaA572019E",
+      "421614": "0xE2fDf320cf771dd4eC1DbdB1B1CEd6003D672186",
+      "84532": "0x2E5C088AB4ECD053E0a9ae29195446457143acd6",
+      "31337": "0xe3dE80F8dB28d1C2ebE6F1e8d42Ea4EaA572019E",
+      "1337": "0xE2fDf320cf771dd4eC1DbdB1B1CEd6003D672186"
+    }
   },
   "abi": [
     {
@@ -147,6 +153,11 @@
           "name": "amount",
           "type": "uint256",
           "internalType": "uint256"
+        },
+        {
+          "name": "stake",
+          "type": "bool",
+          "internalType": "bool"
         }
       ],
       "outputs": [
@@ -178,7 +189,12 @@
         {
           "name": "usdPlus",
           "type": "address",
-          "internalType": "address"
+          "internalType": "contract UsdPlus"
+        },
+        {
+          "name": "stakedUsdPlus",
+          "type": "address",
+          "internalType": "contract StakedUsdPlus"
         },
         {
           "name": "router",
@@ -193,6 +209,25 @@
       ],
       "outputs": [],
       "stateMutability": "nonpayable"
+    },
+    {
+      "type": "function",
+      "name": "isStakingEnabled",
+      "inputs": [
+        {
+          "name": "destinationChainSelector",
+          "type": "uint64",
+          "internalType": "uint64"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "",
+          "type": "bool",
+          "internalType": "bool"
+        }
+      ],
+      "stateMutability": "view"
     },
     {
       "type": "function",
@@ -301,6 +336,11 @@
           "name": "amount",
           "type": "uint256",
           "internalType": "uint256"
+        },
+        {
+          "name": "stake",
+          "type": "bool",
+          "internalType": "bool"
         }
       ],
       "outputs": [
@@ -356,6 +396,24 @@
           "name": "router",
           "type": "address",
           "internalType": "address"
+        }
+      ],
+      "outputs": [],
+      "stateMutability": "nonpayable"
+    },
+    {
+      "type": "function",
+      "name": "setStakingEnabled",
+      "inputs": [
+        {
+          "name": "destinationChainSelector",
+          "type": "uint64",
+          "internalType": "uint64"
+        },
+        {
+          "name": "enabled",
+          "type": "bool",
+          "internalType": "bool"
         }
       ],
       "outputs": [],
@@ -553,6 +611,12 @@
           "type": "uint256",
           "indexed": false,
           "internalType": "uint256"
+        },
+        {
+          "name": "stake",
+          "type": "bool",
+          "indexed": false,
+          "internalType": "bool"
         }
       ],
       "anonymous": false
@@ -603,6 +667,12 @@
           "type": "uint256",
           "indexed": false,
           "internalType": "uint256"
+        },
+        {
+          "name": "stake",
+          "type": "bool",
+          "indexed": false,
+          "internalType": "bool"
         },
         {
           "name": "fee",
@@ -803,6 +873,11 @@
           "internalType": "address"
         }
       ]
+    },
+    {
+      "type": "error",
+      "name": "StakingDisabled",
+      "inputs": []
     },
     {
       "type": "error",
